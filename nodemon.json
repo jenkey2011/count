@@ -1,0 +1,17 @@
+{
+    "verbose": true,
+    "debug": false,
+    "delay": 1000,
+    "ignore": [
+        "mochawesome-report",
+        "node_modules",
+        "./test",
+        "**/*.d.ts",
+        "*.test.ts",
+        "*.spec.ts",
+        "fixtures/*",
+        "test/**/*",
+        "docs/*"
+    ],
+    "watch": ["./src"]
+}
