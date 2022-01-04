@@ -1,6 +1,6 @@
 {
     "verbose": true,
-    "debug": false,
+    "debug": true,
     "delay": 1000,
     "ignore": [
         "mochawesome-report",

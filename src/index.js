@@ -1,37 +1,49 @@
+const { makeBadge, ValidationError } = require('badge-maker')
+const axios = require('axios');
 const Koa = require('koa');
+const Router = require('@koa/router')
+
 const app = new Koa();
-app.keys = ['im a newer secret', 'i like turtle'];
+let home = new Router()
 
-// logger
+const API = 'https://api.countapi.xyz';
 
-app.use(async (ctx, next) => {
-    console.log(1)
-  await next();
-  console.log(2)
-  const rt = ctx.response.get('X-Response-Time');
-  console.log(`${ctx.method} ${ctx.url} - ${rt}`);
-});
+// 子路由1
+home.get('/', async (ctx) => {
+    let html = `
+      <ul>
+        <li><a href="/counter/helloworld">/counter/helloworld</a></li>
+        <li><a href="/counter">/counter</a></li>
+      </ul>
+    `
+    ctx.body = html
+})
 
-// x-response-time
+// counter
+let counter = new Router()
+counter.get('/', async (ctx) => {
+    const { id, label='counter', labelColor='#555', color='#4c1', style='flat' } = ctx.request.query;
+    if (!id || id.indexOf('.') < 0) {
+        ctx.body = 'id not fond!';
+    }
+    const n = id.lastIndexOf('.');
+    const c_space = id.substring(0, n - 1);
+    const c_key = id.substring(n + 1);
+    const response = await axios.get(`${API}/hit/jenkey2011.${c_space}/${c_key}`);
+    ctx.body = makeBadge({
+        label,
+        message: `${response.data.value}`,
+        labelColor: `#${labelColor}`,
+        color: `#${color}`,
+        style
+    });
+}).get('/helloworld', async (ctx) => {
+    ctx.body = 'helloworld page!'
+})
 
-app.use(async (ctx, next) => {
-    console.log(3)
-  const start = Date.now();
-  await next();
-  console.log(4)
-  const ms = Date.now() - start;
-  ctx.set('X-Response-Time', `${ms}ms`);
-});
+let router = new Router()
+router.use('/', home.routes(), home.allowedMethods())
+router.use('/counter', counter.routes(), counter.allowedMethods())
 
-// response
-
-app.use(async ctx => {
-    console.log(5)
-  ctx.body = 'Hello World!!';
-  ctx.cookies.set('name', 'tobi', { signed: true });
-
-  console.log(6)
-});
-
-
-app.listen(3000);
+// 加载路由中间件
+app.use(router.routes()).use(router.allowedMethods()).listen(3000);

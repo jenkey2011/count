@@ -2,17 +2,21 @@
   "name": "count",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js",
+    "start": "nodemon src/index.js",
     "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.13.4"
+    "@koa/router": "~10.1.1",
+    "axios": "~0.24.0",
+    "badge-maker": "~3.3.1",
+    "koa": "^2.13.4",
+    "node-polyfill-webpack-plugin": "~1.1.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",

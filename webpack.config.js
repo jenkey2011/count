@@ -1,23 +1,27 @@
 const path = require('path');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 
 module.exports = {
-    target: 'webworker',
+    target: 'node',
+    mode: 'production',
     entry: './src/index.js',
-    ouput: {
+    output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js'
     },
-    node: {
-        fs: 'empty',
-    },
-    module: {
-        rules: [
-            {
-                test: /\.mjs$/,
-                include: /node_modules/,
-                type: 'javascript/auto'
-            }
-        ]
-    }
+    // plugins: [
+    //     new NodePolyfillPlugin()
+    // ],
+    // node: {
+    // },
+    // module: {
+    //     rules: [
+    //         {
+    //             test: /\.mjs$/,
+    //             include: /node_modules/,
+    //             type: 'javascript/auto'
+    //         }
+    //     ]
+    // },
 
 };
