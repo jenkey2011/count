@@ -6,7 +6,7 @@ A service that allows you to create simple numeric counters and display as a bad
 
 ```html
 <!-- or <img src="https://count.jenkey2011.xyz/badge?id=jenkey2011.count"> -->
-![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count sdfds)
+![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count)
 ```
 ![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count)
 

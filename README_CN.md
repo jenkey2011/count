@@ -6,7 +6,7 @@
 
 ```html
 <!-- 或者 <img src="https://count.jenkey2011.xyz/badge?id=jenkey2011.count"> -->
-![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count sdfds)
+![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count)
 ```
 ![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count)
 
