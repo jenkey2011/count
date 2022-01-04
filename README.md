@@ -1,4 +1,4 @@
-# counter ![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count_viewed)
+# counter ![](https://count.jenkey2011.xyz/badge?id=jenkey2011.count_viewed)
 
 A service that allows you to create simple numeric counters and display as a badge on the page, easy to use and configurable. It is generally used for statistics of blog or page visits. 
 
