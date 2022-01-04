@@ -27,7 +27,10 @@ badge.get('/', async (ctx) => {
     const c_space = id.substring(0, n - 1);
     const c_key = id.substring(n + 1);
     const response = await axios.get(`${API}/hit/jenkey2011.${c_space}/${c_key}`);
-    ctx.response.set("content-type", "image/svg+xml");
+    ctx.set("content-type", "image/svg+xml");
+    ctx.set('Cache-Control', 'no-cache, max-age=0, no-store, s-maxage=0, proxy-revalidate');
+    ctx.set('Pragma', 'no-cache');
+    ctx.set('Expires', 0);
     ctx.body = makeBadge({
         label,
         message: `${response.data.value}`,
