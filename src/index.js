@@ -30,6 +30,7 @@ counter.get('/', async (ctx) => {
     const c_space = id.substring(0, n - 1);
     const c_key = id.substring(n + 1);
     const response = await axios.get(`${API}/hit/jenkey2011.${c_space}/${c_key}`);
+    ctx.response.set("content-type", "image/svg+xml");
     ctx.body = makeBadge({
         label,
         message: `${response.data.value}`,
