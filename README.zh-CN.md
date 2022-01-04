@@ -1,5 +1,5 @@
 [English](./README.md) | 简体中文
-# counter ![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count_viewed)
+# count ![viewed](https://count.jenkey2011.xyz/badge?id=jenkey2011.count_viewed)
 
 一个简单的计数器服务，简单、好用、可配置，一般用于博文或者页面访问统计。
 
