@@ -1,4 +1,6 @@
+require('dotenv').config();
 const { makeBadge } = require('badge-maker')
+const md5 = require('md5');
 const axios = require('axios');
 const Koa = require('koa');
 const Router = require('@koa/router')
@@ -17,16 +19,15 @@ home.get('/', async (ctx) => {
 })
 
 // badge
-let badge = new Router()
+let badge = new Router();
+const secret = process.env.SECRET_KEY || 'jenkey2011'
+
 badge.get('/', async (ctx) => {
     const { id, label='count', labelColor='555', color='4c1', style='flat' } = ctx.request.query;
     if (!id || id.indexOf('.') < 0) {
         ctx.body = 'id not fond!';
     }
-    const n = id.lastIndexOf('.');
-    const c_space = id.substring(0, n - 1);
-    const c_key = id.substring(n + 1);
-    const response = await axios.get(`${API}/hit/jenkey2011.${c_space}/${c_key}`);
+    const response = await axios.get(`${API}/hit/jenkey2011/${md5(id + secret)}`);
     ctx.set("content-type", "image/svg+xml");
     ctx.set('Cache-Control', 'no-cache, max-age=0, no-store, s-maxage=0, proxy-revalidate');
     ctx.set('Pragma', 'no-cache');
